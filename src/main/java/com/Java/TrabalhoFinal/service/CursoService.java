@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -15,5 +16,9 @@ public class CursoService {
 
     public List<Curso> listaCursos(){
         return repository.findAll();
+    }
+
+    public Optional<Curso> buscaCursoId(Integer id){
+        return repository.findById(id);
     }
 }
