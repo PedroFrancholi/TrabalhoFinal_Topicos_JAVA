@@ -14,8 +14,9 @@ import java.util.List;
 public class Aluno implements Serializable {
 
     @Id
-    @Column(name = "RA", nullable = false)
-    private Long ra;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long id;
 
     @Column(name = "NOME", nullable = false)
     private String nome;
@@ -28,18 +29,17 @@ public class Aluno implements Serializable {
 
     @OneToMany(mappedBy = "aluno")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @NotNull
     private List<Curso> cursos;
 
     public Aluno() {
     }
 
-    public Long getRa() {
-        return ra;
+    public Long getId() {
+        return id;
     }
 
-    public void setRa(Long ra) {
-        this.ra = ra;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

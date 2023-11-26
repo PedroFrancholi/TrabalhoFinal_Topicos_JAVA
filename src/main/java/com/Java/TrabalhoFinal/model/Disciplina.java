@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class Disciplina implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 

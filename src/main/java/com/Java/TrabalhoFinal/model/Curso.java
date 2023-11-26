@@ -14,6 +14,7 @@ import java.util.List;
 public class Curso implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
@@ -28,6 +29,7 @@ public class Curso implements Serializable {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @NotNull
     private List<Disciplina> disciplinas;
+
     public Curso() {
     }
 
