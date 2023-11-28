@@ -18,11 +18,8 @@ public class Disciplina implements Serializable {
     @Column(name = "DISCIPLINA", nullable = false)
     private String disciplina;
 
-    @Column(name = "NOTA", nullable = false)
+    @Column(name = "NOTA")
     private BigDecimal nota;
-
-    @Column(name = "STATUS", nullable = false)
-    private String status;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,14 +50,6 @@ public class Disciplina implements Serializable {
 
     public void setNota(BigDecimal nota) {
         this.nota = nota;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Curso getCurso() {

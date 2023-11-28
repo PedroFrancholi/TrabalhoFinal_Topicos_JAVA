@@ -21,7 +21,7 @@ public class Aluno implements Serializable {
     @Column(name = "NOME", nullable = false)
     private String nome;
 
-    @Column(name = "CPF", nullable = false)
+    @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "DT_NASCIMENTO", nullable = false)
