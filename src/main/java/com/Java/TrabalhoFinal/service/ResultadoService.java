@@ -30,6 +30,7 @@ public class ResultadoService {
             for (Curso curso : aluno.getCursos()){
                 for (Disciplina disciplina : curso.getDisciplinas()){
                     Resultado resultado = new Resultado();
+                    resultado.setIdAluno(aluno.getId());
                     resultado.setNomeAluno(aluno.getNome());
                     resultado.setNomeCurso(curso.getCurso());
                     resultado.setNomeDisciplina(disciplina.getDisciplina());

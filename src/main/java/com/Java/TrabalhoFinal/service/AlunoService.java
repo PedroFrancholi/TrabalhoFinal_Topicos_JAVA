@@ -5,8 +5,11 @@ import com.Java.TrabalhoFinal.model.Curso;
 import com.Java.TrabalhoFinal.model.Disciplina;
 import com.Java.TrabalhoFinal.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,20 +27,27 @@ public class AlunoService {
         return repository.findById(id);
     }
     //POST
-    public Aluno gravaAluno(Aluno aluno) {
+    public ResponseEntity<?> gravaAluno(Aluno aluno) {
         if (!aluno.getCursos().isEmpty()) {
             for (Curso curso : aluno.getCursos()) {
 
                 curso.setAluno(aluno);
 
                 List<Disciplina> disciplinas = curso.getDisciplinas();
-                if(!disciplinas.isEmpty()){
-                    for (Disciplina disciplina : disciplinas){
+                if (!disciplinas.isEmpty()) {
+                    for (Disciplina disciplina : disciplinas) {
+                        BigDecimal nota = disciplina.getNota();
+                        if (nota.compareTo(BigDecimal.ZERO) < 0) {
+                            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA ("+nota+") INVÁLIDA, MENOR QUE 0");
+                        } else if (nota.compareTo(new BigDecimal(100)) > 0) {
+                            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA ("+nota+") INVÁLIDA, MAIOR QUE 100");
+                        }
+
                         disciplina.setCurso(curso);
                     }
                 }
             }
         }
-        return repository.save(aluno);
+        return ResponseEntity.status(HttpStatus.OK).body(repository.save(aluno));
     }
 }

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 public class Resultado implements Serializable {
 
+    private Long idAluno;
     private String nomeAluno;
     private String nomeCurso;
     private String nomeDisciplina;
@@ -12,6 +13,14 @@ public class Resultado implements Serializable {
     private String status;
 
     public Resultado() {
+    }
+
+    public Long getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(Long idAluno) {
+        this.idAluno = idAluno;
     }
 
     public String getNomeAluno() {
