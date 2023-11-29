@@ -14,6 +14,9 @@ public class CursoService {
 
     private CursoRepository repository;
 
+    public Curso gravaCurso(Curso curso){
+        return repository.save(curso);
+    }
     public List<Curso> listaCursos(){
         return repository.findAll();
     }

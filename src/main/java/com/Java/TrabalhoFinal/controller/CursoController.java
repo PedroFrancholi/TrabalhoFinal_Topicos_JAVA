@@ -27,6 +27,25 @@ public class CursoController {
         return ResponseEntity.status(HttpStatus.OK).body(service.buscaCursoId(id));
     }
 
+    @PostMapping()
+    public ResponseEntity<Curso> gravaCurso(@RequestBody Curso curso){
+        return ResponseEntity.status(HttpStatus.OK).body(service.gravaCurso(curso));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> alteraCurso(@RequestBody Curso curso, @PathVariable(value = "id") Long id){
+        Optional<Curso> cursoExiste = service.buscaCursoId(id);
+
+        if(cursoExiste.isEmpty()){
+            return ResponseEntity.status(HttpStatus.OK).body("Não encontrado!");
+        }
+
+        Curso newCurso = cursoExiste.get();
+        newCurso.setCurso(curso.getCurso());
+        newCurso.setAluno(curso.getAluno());
+
+        return ResponseEntity.status(HttpStatus.OK).body(service.gravaCurso(newCurso));
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteCurso(@PathVariable(value = "id") Long id){
