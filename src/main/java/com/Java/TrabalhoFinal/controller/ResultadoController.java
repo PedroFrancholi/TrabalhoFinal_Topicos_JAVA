@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/resultado")
@@ -22,6 +23,11 @@ public class ResultadoController {
     @GetMapping()
     public List<Resultado> calculaNota(){
         return service.calcularResultado();
+    }
+
+    @GetMapping("/{id}")
+    public List<Resultado> calculaNotaId(@PathVariable(value = "id") Long id){
+        return service.calculaResultadoId(id);
     }
 
 }

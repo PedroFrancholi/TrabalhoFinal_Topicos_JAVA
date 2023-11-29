@@ -36,4 +36,5 @@ public class AlunoController {
     public ResponseEntity<Object> gravaAluno(@RequestBody Aluno aluno){
         return ResponseEntity.status(HttpStatus.OK).body(service.gravaAluno(aluno));
     }
+
 }

@@ -18,7 +18,12 @@ public class CursoService {
         return repository.findAll();
     }
 
-    public Optional<Curso> buscaCursoId(Integer id){
+    public Optional<Curso> buscaCursoId(Long id){
         return repository.findById(id);
     }
+
+    public void deleteCurso(Optional<Curso> curso){
+        repository.delete(curso.get());
+    }
+
 }

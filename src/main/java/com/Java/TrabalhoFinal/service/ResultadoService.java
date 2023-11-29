@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResultadoService {
@@ -56,7 +57,19 @@ public class ResultadoService {
                 }
             }
         }
-
         return resultados;
+    }
+
+    public List<Resultado> calculaResultadoId(Long id){
+        List<Resultado> resultados = calcularResultado();
+        List<Resultado> resultadosDoAluno = new ArrayList<>();
+
+        for (Resultado resultado:resultados){
+            if(resultado.getIdAluno().equals(id)){
+                resultadosDoAluno.add(resultado);
+            }
+        }
+
+        return resultadosDoAluno;
     }
 }

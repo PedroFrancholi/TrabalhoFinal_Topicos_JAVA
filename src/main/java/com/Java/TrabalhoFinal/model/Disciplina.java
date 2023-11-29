@@ -13,16 +13,13 @@ public class Disciplina implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "DISCIPLINA", nullable = false)
     private String disciplina;
 
     @Column(name = "NOTA")
     private BigDecimal nota;
-
-    @Column(name = "STATUS", nullable = false)
-    private String status;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,11 +28,11 @@ public class Disciplina implements Serializable {
     public Disciplina() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,14 +50,6 @@ public class Disciplina implements Serializable {
 
     public void setNota(BigDecimal nota) {
         this.nota = nota;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Curso getCurso() {
