@@ -27,7 +27,7 @@ public class AlunoService {
         return repository.findById(id);
     }
     //POST
-    public ResponseEntity<?> gravaAluno(Aluno aluno) {
+    public ResponseEntity<Object> gravaAluno(Aluno aluno) {
         if (!aluno.getCursos().isEmpty()) {
             for (Curso curso : aluno.getCursos()) {
 
