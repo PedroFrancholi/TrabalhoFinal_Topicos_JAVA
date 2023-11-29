@@ -37,12 +37,13 @@ public class AlunoService {
                 if (!disciplinas.isEmpty()) {
                     for (Disciplina disciplina : disciplinas) {
                         BigDecimal nota = disciplina.getNota();
-                        if (nota.compareTo(BigDecimal.ZERO) < 0) {
-                            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA ("+nota+") INVÁLIDA, MENOR QUE 0");
-                        } else if (nota.compareTo(new BigDecimal(100)) > 0) {
-                            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA ("+nota+") INVÁLIDA, MAIOR QUE 100");
+                        if(nota != null) {
+                            if (nota.compareTo(BigDecimal.ZERO) < 0) {
+                                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA (" + nota + ") INVÁLIDA, MENOR QUE 0");
+                            } else if (nota.compareTo(new BigDecimal(10)) > 0) {
+                                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("NOTA (" + nota + ") INVÁLIDA, MAIOR QUE 10");
+                            }
                         }
-
                         disciplina.setCurso(curso);
                     }
                 }

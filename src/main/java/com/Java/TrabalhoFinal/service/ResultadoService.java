@@ -40,11 +40,11 @@ public class ResultadoService {
                     if(resultado.getNota()!=null) {
                         if(resultado.getNota().compareTo(new BigDecimal(0)) < 0){
                             resultado.setStatus("NOTA INVÁLIDA, MENOR QUE ZERO");
-                        }else if(resultado.getNota().compareTo(new BigDecimal(100)) > 0) {
-                            resultado.setStatus("NOTA INVÁLIDA, MAIOR QUE 100");
-                        }else if(resultado.getNota().compareTo(new BigDecimal(70)) >= 0){
+                        }else if(resultado.getNota().compareTo(new BigDecimal(10)) > 0) {
+                            resultado.setStatus("NOTA INVÁLIDA, MAIOR QUE 10");
+                        }else if(resultado.getNota().compareTo(new BigDecimal(7)) >= 0){
                             resultado.setStatus("APROVADO");
-                        }else if(resultado.getNota().compareTo(new BigDecimal(40)) >= 0){
+                        }else if(resultado.getNota().compareTo(new BigDecimal(4)) >= 0){
                             resultado.setStatus("ESTÁ DE EXAME");
                         }else{
                             resultado.setStatus("REPROVADO");
